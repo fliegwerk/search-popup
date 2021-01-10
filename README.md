@@ -7,7 +7,7 @@
 ## Install
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/fliegwerk/search-popup@1.0.0/dist/bundle.js" />
+<script src="https://cdn.jsdelivr.net/gh/fliegwerk/search-popup@1.0.1/dist/bundle.js" />
 </script>
 ```
 

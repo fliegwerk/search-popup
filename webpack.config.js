@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const TerserPlugin = require("terser-webpack-plugin");
 const WebpackLicensePlugin = require("webpack-license-plugin");
 
@@ -20,7 +21,8 @@ module.exports = {
     plugins: [
         new WebpackLicensePlugin({
             licenseOverrides: {'dialog-polyfill@0.5.5': 'BSD-3-Clause'}
-        })
+        }),
+        new webpack.BannerPlugin({banner: "See oss-licenses.json for licenses of open-source projects used here."})
     ],
     devtool: 'source-map',
     module: {

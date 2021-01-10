@@ -1,6 +1,6 @@
 {
   "name": "search-popup",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "build": "webpack",
     "start": "webpack --watch"
