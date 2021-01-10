@@ -1,0 +1,29 @@
+{
+  "name": "search-popup",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack --watch"
+  },
+  "author": "Pablo Klaschka",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@types/preact-custom-element": "^4.0.0",
+    "awesome-typescript-loader": "^5.2.1",
+    "css-loader": "^5.0.1",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "style-loader": "^2.0.0",
+    "terser-webpack-plugin": "^5.1.1",
+    "ts-loader": "^8.0.14",
+    "typescript": "^4.1.3",
+    "webpack": "^5.12.1",
+    "webpack-cli": "^4.3.1",
+    "webpack-license-plugin": "^4.1.2"
+  },
+  "dependencies": {
+    "dialog-polyfill": "^0.5.5",
+    "preact": "^10.5.9",
+    "preact-custom-element": "^4.2.1"
+  }
+}

@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+}
+
+dialog.search-dialog {
+    border: none;
+    border-radius: var(--universal-border-radius);
+    width: 480px;
+    max-width: 80%;
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%);
+    margin: 0;
+    box-sizing: border-box;
+}
+
+dialog.search-dialog * {
+    box-sizing: border-box;
+}
+
+dialog.search-dialog > div {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+dialog.search-dialog table, dialog.search-dialog input, dialog.search-dialog button, dialog.search-dialog [type="search"] {
+    width: 100%;
+    /*margin: 0;*/
+}
+
+dialog.search-dialog form {
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+dialog.search-dialog ul {
+    overflow: auto;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+dialog.search-dialog ul li {
+    list-style-type: none;
+}
+
+dialog.search-dialog ul li.active a {
+    background: var(--button-back-color);
+}
+
+dialog.search-dialog ul li a {
+    color: inherit !important;
+    text-decoration: none;
+    display: block;
+}
+
+dialog.search-dialog ul li a:hover {
+    text-decoration: none;
+}

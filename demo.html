@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
+    <title>Document</title>
+    <style>
+        header {
+            display: flex;
+            align-items: center;
+        }
+
+        .spacer {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+<header class="sticky">
+    <a href="#" class="logo">Search Popup</a>
+    <div class="spacer"></div>
+    <button onclick="openSearch()"><span class="icon-search"></span> Search: <kbd>Ctrl</kbd>+<kbd>K</kbd></button>
+</header>
+<h1>Search Popup Demo</h1>
+
+<script src="https://rawcdn.githack.com/nextapps-de/flexsearch/master/dist/flexsearch.min.js"></script>
+<script src="dist/bundle.js"></script>
+<script>
+    const index = [{
+        "name": "@wuespace/vertx-event-bus",
+        "text": "@wuespace/vertx-event-bus",
+        "url": "/@wuespace/vertx-event-bus"
+    }, {
+        "name": "defaultOptions",
+        "text": "@wuespace/vertx-event-bus.defaultOptions",
+        "url": "/@wuespace/vertx-event-bus#defaultOptions"
+    }, {
+        "name": "EventBus",
+        "text": "@wuespace/vertx-event-bus.EventBus",
+        "url": "/@wuespace/vertx-event-bus#EventBus"
+    }, {"name": "options", "text": "", "url": "/@wuespace/vertx-event-bus#EventBus.options"}, {
+        "name": "serverUrl",
+        "text": "",
+        "url": "/@wuespace/vertx-event-bus#EventBus.serverUrl"
+    }, {
+        "name": "messageCount",
+        "text": "",
+        "url": "/@wuespace/vertx-event-bus#EventBus.messageCount"
+    }, {"name": "onOpen", "text": "", "url": "/@wuespace/vertx-event-bus#EventBus.onOpen"}, {
+        "name": "onClose",
+        "text": "",
+        "url": "/@wuespace/vertx-event-bus#EventBus.onClose"
+    }, {
+        "name": "onReconnect",
+        "text": "",
+        "url": "/@wuespace/vertx-event-bus#EventBus.onReconnect"
+    }, {"name": "onError", "text": "", "url": "/@wuespace/vertx-event-bus#EventBus.onError"}, {
+        "name": "getStateName",
+        "text": "",
+        "url": "/@wuespace/vertx-event-bus#EventBus.getStateName"
+    }, {
+        "name": "enablePing",
+        "text": "",
+        "url": "/@wuespace/vertx-event-bus#EventBus.enablePing"
+    }, {
+        "name": "enableReconnect",
+        "text": "",
+        "url": "/@wuespace/vertx-event-bus#EventBus.enableReconnect"
+    }, {
+        "name": "registerHandler",
+        "text": "",
+        "url": "/@wuespace/vertx-event-bus#EventBus.registerHandler"
+    }, {
+        "name": "unregisterHandler",
+        "text": "",
+        "url": "/@wuespace/vertx-event-bus#EventBus.unregisterHandler"
+    }, {"name": "publish", "text": "", "url": "/@wuespace/vertx-event-bus#EventBus.publish"}, {
+        "name": "send",
+        "text": "",
+        "url": "/@wuespace/vertx-event-bus#EventBus.send"
+    }, {"name": "close", "text": "", "url": "/@wuespace/vertx-event-bus#EventBus.close"}, {
+        "name": "Options",
+        "text": "@wuespace/vertx-event-bus.Options",
+        "url": "/@wuespace/vertx-event-bus#Options"
+    }, {
+        "name": "pingInterval",
+        "text": "",
+        "url": "/@wuespace/vertx-event-bus#Options.pingInterval"
+    }, {
+        "name": "reconnectAttempts",
+        "text": "",
+        "url": "/@wuespace/vertx-event-bus#Options.reconnectAttempts"
+    }, {
+        "name": "reconnectExponent",
+        "text": "",
+        "url": "/@wuespace/vertx-event-bus#Options.reconnectExponent"
+    }, {"name": "delayMin", "text": "", "url": "/@wuespace/vertx-event-bus#Options.delayMin"}, {
+        "name": "delayMax",
+        "text": "",
+        "url": "/@wuespace/vertx-event-bus#Options.delayMax"
+    }, {
+        "name": "randomizationFactor",
+        "text": "",
+        "url": "/@wuespace/vertx-event-bus#Options.randomizationFactor"
+    }, {
+        "name": "JsonSerializable",
+        "text": "@wuespace/vertx-event-bus.JsonSerializable",
+        "url": "/@wuespace/vertx-event-bus#JsonSerializable"
+    }, {
+        "name": "Headers",
+        "text": "@wuespace/vertx-event-bus.Headers",
+        "url": "/@wuespace/vertx-event-bus#Headers"
+    }, {
+        "name": "BaseMessage",
+        "text": "@wuespace/vertx-event-bus.BaseMessage",
+        "url": "/@wuespace/vertx-event-bus#BaseMessage"
+    }, {
+        "name": "type",
+        "text": "",
+        "url": "/@wuespace/vertx-event-bus#BaseMessage.type"
+    }, {
+        "name": "AddressableMessage",
+        "text": "@wuespace/vertx-event-bus.AddressableMessage",
+        "url": "/@wuespace/vertx-event-bus#AddressableMessage"
+    }, {
+        "name": "address",
+        "text": "",
+        "url": "/@wuespace/vertx-event-bus#AddressableMessage.address"
+    }, {
+        "name": "headers",
+        "text": "",
+        "url": "/@wuespace/vertx-event-bus#AddressableMessage.headers"
+    }, {
+        "name": "replyAddress",
+        "text": "",
+        "url": "/@wuespace/vertx-event-bus#AddressableMessage.replyAddress"
+    }, {
+        "name": "reply",
+        "text": "",
+        "url": "/@wuespace/vertx-event-bus#AddressableMessage.reply"
+    }, {
+        "name": "ContentMessage",
+        "text": "@wuespace/vertx-event-bus.ContentMessage",
+        "url": "/@wuespace/vertx-event-bus#ContentMessage"
+    }, {"name": "body", "text": "", "url": "/@wuespace/vertx-event-bus#ContentMessage.body"}, {
+        "name": "PingMessage",
+        "text": "@wuespace/vertx-event-bus.PingMessage",
+        "url": "/@wuespace/vertx-event-bus#PingMessage"
+    }, {"name": "type", "text": "", "url": "/@wuespace/vertx-event-bus#PingMessage.type"}, {
+        "name": "RegisterMessage",
+        "text": "@wuespace/vertx-event-bus.RegisterMessage",
+        "url": "/@wuespace/vertx-event-bus#RegisterMessage"
+    }, {
+        "name": "type",
+        "text": "",
+        "url": "/@wuespace/vertx-event-bus#RegisterMessage.type"
+    }, {
+        "name": "UnregisterMessage",
+        "text": "@wuespace/vertx-event-bus.UnregisterMessage",
+        "url": "/@wuespace/vertx-event-bus#UnregisterMessage"
+    }, {
+        "name": "type",
+        "text": "",
+        "url": "/@wuespace/vertx-event-bus#UnregisterMessage.type"
+    }, {
+        "name": "PublishMessage",
+        "text": "@wuespace/vertx-event-bus.PublishMessage",
+        "url": "/@wuespace/vertx-event-bus#PublishMessage"
+    }, {"name": "type", "text": "", "url": "/@wuespace/vertx-event-bus#PublishMessage.type"}, {
+        "name": "SendMessage",
+        "text": "@wuespace/vertx-event-bus.SendMessage",
+        "url": "/@wuespace/vertx-event-bus#SendMessage"
+    }, {"name": "type", "text": "", "url": "/@wuespace/vertx-event-bus#SendMessage.type"}, {
+        "name": "ReceiveMessage",
+        "text": "@wuespace/vertx-event-bus.ReceiveMessage",
+        "url": "/@wuespace/vertx-event-bus#ReceiveMessage"
+    }, {"name": "type", "text": "", "url": "/@wuespace/vertx-event-bus#ReceiveMessage.type"}, {
+        "name": "ErrorMessage",
+        "text": "@wuespace/vertx-event-bus.ErrorMessage",
+        "url": "/@wuespace/vertx-event-bus#ErrorMessage"
+    }, {"name": "type", "text": "", "url": "/@wuespace/vertx-event-bus#ErrorMessage.type"}, {
+        "name": "failureCode",
+        "text": "",
+        "url": "/@wuespace/vertx-event-bus#ErrorMessage.failureCode"
+    }, {
+        "name": "failureType",
+        "text": "",
+        "url": "/@wuespace/vertx-event-bus#ErrorMessage.failureType"
+    }, {"name": "message", "text": "", "url": "/@wuespace/vertx-event-bus#ErrorMessage.message"}, {
+        "name": "Message",
+        "text": "@wuespace/vertx-event-bus.Message",
+        "url": "/@wuespace/vertx-event-bus#Message"
+    }, {
+        "name": "Callback",
+        "text": "@wuespace/vertx-event-bus.Callback",
+        "url": "/@wuespace/vertx-event-bus#Callback"
+    }, {
+        "name": "@wuespace/telestion-client-types",
+        "text": "@wuespace/telestion-client-types",
+        "url": "/@wuespace/telestion-client-types"
+    }, {
+        "name": "JsonSerializable",
+        "text": "@wuespace/telestion-client-types.JsonSerializable",
+        "url": "/@wuespace/telestion-client-types#JsonSerializable"
+    }, {
+        "name": "AbstractRouting",
+        "text": "@wuespace/telestion-client-types.AbstractRouting",
+        "url": "/@wuespace/telestion-client-types#AbstractRouting"
+    }, {"name": "path", "text": "", "url": "/@wuespace/telestion-client-types#AbstractRouting.path"}, {
+        "name": "exact",
+        "text": "",
+        "url": "/@wuespace/telestion-client-types#AbstractRouting.exact"
+    }, {
+        "name": "AbstractRedirect",
+        "text": "@wuespace/telestion-client-types.AbstractRedirect",
+        "url": "/@wuespace/telestion-client-types#AbstractRedirect"
+    }, {
+        "name": "redirectPath",
+        "text": "",
+        "url": "/@wuespace/telestion-client-types#AbstractRedirect.redirectPath"
+    }, {
+        "name": "AdditionalRedirect",
+        "text": "@wuespace/telestion-client-types.AdditionalRedirect",
+        "url": "/@wuespace/telestion-client-types#AdditionalRedirect"
+    }, {
+        "name": "last",
+        "text": "",
+        "url": "/@wuespace/telestion-client-types#AdditionalRedirect.last"
+    }, {
+        "name": "DefaultRouting",
+        "text": "@wuespace/telestion-client-types.DefaultRouting",
+        "url": "/@wuespace/telestion-client-types#DefaultRouting"
+    }, {
+        "name": "type",
+        "text": "",
+        "url": "/@wuespace/telestion-client-types#DefaultRouting.type"
+    }, {
+        "name": "UnAuthRouting",
+        "text": "@wuespace/telestion-client-types.UnAuthRouting",
+        "url": "/@wuespace/telestion-client-types#UnAuthRouting"
+    }, {
+        "name": "type",
+        "text": "",
+        "url": "/@wuespace/telestion-client-types#UnAuthRouting.type"
+    }, {
+        "name": "AuthRouting",
+        "text": "@wuespace/telestion-client-types.AuthRouting",
+        "url": "/@wuespace/telestion-client-types#AuthRouting"
+    }, {"name": "type", "text": "", "url": "/@wuespace/telestion-client-types#AuthRouting.type"}, {
+        "name": "Routing",
+        "text": "@wuespace/telestion-client-types.Routing",
+        "url": "/@wuespace/telestion-client-types#Routing"
+    }, {
+        "name": "ConfigControlsProps",
+        "text": "@wuespace/telestion-client-types.ConfigControlsProps",
+        "url": "/@wuespace/telestion-client-types#ConfigControlsProps"
+    }, {
+        "name": "currentProps",
+        "text": "",
+        "url": "/@wuespace/telestion-client-types#ConfigControlsProps.currentProps"
+    }, {
+        "name": "onUpdate",
+        "text": "",
+        "url": "/@wuespace/telestion-client-types#ConfigControlsProps.onUpdate"
+    }, {
+        "name": "ConfigurableWidgetProps",
+        "text": "@wuespace/telestion-client-types.ConfigurableWidgetProps",
+        "url": "/@wuespace/telestion-client-types#ConfigurableWidgetProps"
+    }, {
+        "name": "Widget",
+        "text": "@wuespace/telestion-client-types.Widget",
+        "url": "/@wuespace/telestion-client-types#Widget"
+    }, {"name": "name", "text": "", "url": "/@wuespace/telestion-client-types#Widget.name"}, {
+        "name": "WidgetFC",
+        "text": "",
+        "url": "/@wuespace/telestion-client-types#Widget.WidgetFC"
+    }, {
+        "name": "ConfigControlsFC",
+        "text": "",
+        "url": "/@wuespace/telestion-client-types#Widget.ConfigControlsFC"
+    }, {
+        "name": "WidgetProps",
+        "text": "@wuespace/telestion-client-types.WidgetProps",
+        "url": "/@wuespace/telestion-client-types#WidgetProps"
+    }, {
+        "name": "@wuespace/telestion-client-prop-types",
+        "text": "@wuespace/telestion-client-prop-types",
+        "url": "/@wuespace/telestion-client-prop-types"
+    }, {
+        "name": "testVariable",
+        "text": "@wuespace/telestion-client-prop-types.testVariable",
+        "url": "/@wuespace/telestion-client-prop-types#testVariable"
+    }, {
+        "name": "@wuespace/telestion-client-core",
+        "text": "@wuespace/telestion-client-core",
+        "url": "/@wuespace/telestion-client-core"
+    }, {
+        "name": "TelestionClientProps",
+        "text": "@wuespace/telestion-client-core.TelestionClientProps",
+        "url": "/@wuespace/telestion-client-core#TelestionClientProps"
+    }, {
+        "name": "title",
+        "text": "",
+        "url": "/@wuespace/telestion-client-core#TelestionClientProps.title"
+    }, {
+        "name": "wrapper",
+        "text": "",
+        "url": "/@wuespace/telestion-client-core#TelestionClientProps.wrapper"
+    }, {
+        "name": "eventBusOptions",
+        "text": "",
+        "url": "/@wuespace/telestion-client-core#TelestionClientProps.eventBusOptions"
+    }, {
+        "name": "children",
+        "text": "",
+        "url": "/@wuespace/telestion-client-core#TelestionClientProps.children"
+    }, {
+        "name": "TelestionClient",
+        "text": "@wuespace/telestion-client-core.TelestionClient",
+        "url": "/@wuespace/telestion-client-core#TelestionClient"
+    }, {
+        "name": "PagesProps",
+        "text": "@wuespace/telestion-client-core.PagesProps",
+        "url": "/@wuespace/telestion-client-core#PagesProps"
+    }, {
+        "name": "children",
+        "text": "",
+        "url": "/@wuespace/telestion-client-core#PagesProps.children"
+    }, {
+        "name": "Pages",
+        "text": "@wuespace/telestion-client-core.Pages",
+        "url": "/@wuespace/telestion-client-core#Pages"
+    }, {
+        "name": "AuthRouteProps",
+        "text": "@wuespace/telestion-client-core.AuthRouteProps",
+        "url": "/@wuespace/telestion-client-core#AuthRouteProps"
+    }, {
+        "name": "redirectPath",
+        "text": "",
+        "url": "/@wuespace/telestion-client-core#AuthRouteProps.redirectPath"
+    }, {
+        "name": "children",
+        "text": "",
+        "url": "/@wuespace/telestion-client-core#AuthRouteProps.children"
+    }, {
+        "name": "AuthRoute",
+        "text": "@wuespace/telestion-client-core.AuthRoute",
+        "url": "/@wuespace/telestion-client-core#AuthRoute"
+    }, {
+        "name": "UnAuthRouteProps",
+        "text": "@wuespace/telestion-client-core.UnAuthRouteProps",
+        "url": "/@wuespace/telestion-client-core#UnAuthRouteProps"
+    }, {
+        "name": "redirectPath",
+        "text": "",
+        "url": "/@wuespace/telestion-client-core#UnAuthRouteProps.redirectPath"
+    }, {
+        "name": "children",
+        "text": "",
+        "url": "/@wuespace/telestion-client-core#UnAuthRouteProps.children"
+    }, {
+        "name": "UnAuthRoute",
+        "text": "@wuespace/telestion-client-core.UnAuthRoute",
+        "url": "/@wuespace/telestion-client-core#UnAuthRoute"
+    }, {
+        "name": "PreferencesProps",
+        "text": "@wuespace/telestion-client-core.PreferencesProps",
+        "url": "/@wuespace/telestion-client-core#PreferencesProps"
+    }, {
+        "name": "children",
+        "text": "",
+        "url": "/@wuespace/telestion-client-core#PreferencesProps.children"
+    }, {
+        "name": "Preferences",
+        "text": "@wuespace/telestion-client-core.Preferences",
+        "url": "/@wuespace/telestion-client-core#Preferences"
+    }, {
+        "name": "GroupProps",
+        "text": "@wuespace/telestion-client-core.GroupProps",
+        "url": "/@wuespace/telestion-client-core#GroupProps"
+    }, {"name": "name", "text": "", "url": "/@wuespace/telestion-client-core#GroupProps.name"}, {
+        "name": "children",
+        "text": "",
+        "url": "/@wuespace/telestion-client-core#GroupProps.children"
+    }, {
+        "name": "Group",
+        "text": "@wuespace/telestion-client-core.Group",
+        "url": "/@wuespace/telestion-client-core#Group"
+    }, {
+        "name": "VariableProps",
+        "text": "@wuespace/telestion-client-core.VariableProps",
+        "url": "/@wuespace/telestion-client-core#VariableProps"
+    }, {
+        "name": "name",
+        "text": "",
+        "url": "/@wuespace/telestion-client-core#VariableProps.name"
+    }, {
+        "name": "initialValue",
+        "text": "",
+        "url": "/@wuespace/telestion-client-core#VariableProps.initialValue"
+    }, {
+        "name": "children",
+        "text": "",
+        "url": "/@wuespace/telestion-client-core#VariableProps.children"
+    }, {
+        "name": "Variable",
+        "text": "@wuespace/telestion-client-core.Variable",
+        "url": "/@wuespace/telestion-client-core#Variable"
+    }, {
+        "name": "AuthState",
+        "text": "@wuespace/telestion-client-core.AuthState",
+        "url": "/@wuespace/telestion-client-core#AuthState"
+    }, {
+        "name": "useAuth",
+        "text": "@wuespace/telestion-client-core.useAuth",
+        "url": "/@wuespace/telestion-client-core#useAuth"
+    }, {
+        "name": "ConnectionState",
+        "text": "@wuespace/telestion-client-core.ConnectionState",
+        "url": "/@wuespace/telestion-client-core#ConnectionState"
+    }, {
+        "name": "EventBusState",
+        "text": "@wuespace/telestion-client-core.EventBusState",
+        "url": "/@wuespace/telestion-client-core#EventBusState"
+    }, {
+        "name": "useEventBus",
+        "text": "@wuespace/telestion-client-core.useEventBus",
+        "url": "/@wuespace/telestion-client-core#useEventBus"
+    }, {
+        "name": "ebOptionsPropTypes",
+        "text": "@wuespace/telestion-client-core.ebOptionsPropTypes",
+        "url": "/@wuespace/telestion-client-core#ebOptionsPropTypes"
+    }, {
+        "name": "PreferenceState",
+        "text": "@wuespace/telestion-client-core.PreferenceState",
+        "url": "/@wuespace/telestion-client-core#PreferenceState"
+    }, {
+        "name": "usePreferences",
+        "text": "@wuespace/telestion-client-core.usePreferences",
+        "url": "/@wuespace/telestion-client-core#usePreferences"
+    }, {
+        "name": "useLogger",
+        "text": "@wuespace/telestion-client-core.useLogger",
+        "url": "/@wuespace/telestion-client-core#useLogger"
+    }, {
+        "name": "useBroadcast",
+        "text": "@wuespace/telestion-client-core.useBroadcast",
+        "url": "/@wuespace/telestion-client-core#useBroadcast"
+    }, {
+        "name": "useChannel",
+        "text": "@wuespace/telestion-client-core.useChannel",
+        "url": "/@wuespace/telestion-client-core#useChannel"
+    }, {
+        "name": "useChannelLatest",
+        "text": "@wuespace/telestion-client-core.useChannelLatest",
+        "url": "/@wuespace/telestion-client-core#useChannelLatest"
+    }, {
+        "name": "useRequest",
+        "text": "@wuespace/telestion-client-core.useRequest",
+        "url": "/@wuespace/telestion-client-core#useRequest"
+    }, {
+        "name": "usePrefValue",
+        "text": "@wuespace/telestion-client-core.usePrefValue",
+        "url": "/@wuespace/telestion-client-core#usePrefValue"
+    }, {
+        "name": "useTitle",
+        "text": "@wuespace/telestion-client-core.useTitle",
+        "url": "/@wuespace/telestion-client-core#useTitle"
+    }, {
+        "name": "JsonSerializable",
+        "text": "@wuespace/telestion-client-core.JsonSerializable",
+        "url": "/@wuespace/telestion-client-core#JsonSerializable"
+    }, {
+        "name": "PrefValue",
+        "text": "@wuespace/telestion-client-core.PrefValue",
+        "url": "/@wuespace/telestion-client-core#PrefValue"
+    }, {
+        "name": "PrefRenderer",
+        "text": "@wuespace/telestion-client-core.PrefRenderer",
+        "url": "/@wuespace/telestion-client-core#PrefRenderer"
+    }, {
+        "name": "Selector",
+        "text": "@wuespace/telestion-client-core.Selector",
+        "url": "/@wuespace/telestion-client-core#Selector"
+    }, {
+        "name": "PrefSelector",
+        "text": "@wuespace/telestion-client-core.PrefSelector",
+        "url": "/@wuespace/telestion-client-core#PrefSelector"
+    }, {
+        "name": "GroupSelector",
+        "text": "@wuespace/telestion-client-core.GroupSelector",
+        "url": "/@wuespace/telestion-client-core#GroupSelector"
+    }, {
+        "name": "Preference",
+        "text": "@wuespace/telestion-client-core.Preference",
+        "url": "/@wuespace/telestion-client-core#Preference"
+    }, {"name": "value", "text": "", "url": "/@wuespace/telestion-client-core#Preference.value"}, {
+        "name": "renderer",
+        "text": "",
+        "url": "/@wuespace/telestion-client-core#Preference.renderer"
+    }, {
+        "name": "PreferencesGroup",
+        "text": "@wuespace/telestion-client-core.PreferencesGroup",
+        "url": "/@wuespace/telestion-client-core#PreferencesGroup"
+    }, {
+        "name": "PreferencesStore",
+        "text": "@wuespace/telestion-client-core.PreferencesStore",
+        "url": "/@wuespace/telestion-client-core#PreferencesStore"
+    }, {
+        "name": "@wuespace/telestion-client-common",
+        "text": "@wuespace/telestion-client-common",
+        "url": "/@wuespace/telestion-client-common"
+    }, {
+        "name": "MyComponent",
+        "text": "@wuespace/telestion-client-common.MyComponent",
+        "url": "/@wuespace/telestion-client-common#MyComponent"
+    }];
+
+    const searchIndex = new FlexSearch({
+        encode: q => (q.replace(/([a-z])([A-Z])/g, "$1 $2")).toLowerCase() + ' ' + q.toLowerCase(),
+        // encode: q => (q.replace(/(.*)[\W.](.*)/g, "$1$2")).toLowerCase(),
+        tokenize: "full",
+        threshold: 0,
+        resolution: 9,
+        depth: 3,
+        doc: {
+            id: 'url',
+            field: ['name', 'text']
+        }
+    });
+
+    searchIndex.add(index)
+
+    function search(q) {
+        q = q || '';
+        return searchIndex.search((q.replace(/([a-z])([A-Z])/g, "$1 $2")).toLowerCase(), 5)
+    }
+
+    console.log(searchIndex.search('Telestion'))
+
+    const searchPopup = document.createElement('search-popup');
+    searchPopup.setAttribute('search', 'search')
+    document.body.appendChild(searchPopup);
+</script>
+</body>
+</html>
