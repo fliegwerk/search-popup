@@ -37,7 +37,6 @@
 
     const searchIndex = new FlexSearch({
         encode: q => (q.replace(/([a-z])([A-Z])/g, "$1 $2")).toLowerCase() + ' ' + q.toLowerCase(),
-        // encode: q => (q.replace(/(.*)[\W.](.*)/g, "$1$2")).toLowerCase(),
         tokenize: "full",
         threshold: 0,
         resolution: 9,
@@ -54,8 +53,6 @@
         q = q || '';
         return searchIndex.search((q.replace(/([a-z])([A-Z])/g, "$1 $2")).toLowerCase(), 5)
     }
-
-    console.log(searchIndex.search('Telestion'))
 
     const searchPopup = document.createElement('search-popup');
     searchPopup.setAttribute('search', 'search')
