@@ -19,19 +19,31 @@ export default function DialogContent(props: DialogContentParams) {
 	return (
 		<div>
 			<Preface />
-			{getForm(onSubmit, query, onChange, props, results)}
+			{getForm({
+				onSubmit: onSubmit,
+				query: query,
+				onChange: onChange,
+				props: props,
+				results: results,
+			})}
 			{getResultList(listRef, results, props)}
 		</div>
 	);
 }
 
-function getForm(
-	onSubmit: (evt: Event) => void,
-	query: string,
-	onChange: (value: string) => void,
-	props: DialogContentParams,
-	results: { url: string; text: string; title: string }[]
-) {
+function getForm({
+	onSubmit,
+	query,
+	onChange,
+	props,
+	results,
+}: {
+	onSubmit: (evt: Event) => void;
+	query: string;
+	onChange: (value: string) => void;
+	props: DialogContentParams;
+	results: { url: string; text: string; title: string }[];
+}) {
 	return (
 		<Form
 			onSubmit={onSubmit}
