@@ -1,4 +1,5 @@
 import {Ref, useCallback} from 'preact/hooks';
+import {DialogContentParams} from "../components/dialog-content-params";
 
 export function useOnChangeCallback(
 	setQuery: (value: ((prevState: string) => string) | string) => void,
@@ -9,14 +10,7 @@ export function useOnChangeCallback(
 			  ) => { url: string; text: string; title: string }[])
 			| { url: string; text: string; title: string }[]
 	) => void,
-	props: {
-		index: number;
-		up: Function;
-		down: Function;
-		reset: Function;
-		searchFn: Function;
-		onClose: Function;
-	},
+	props: DialogContentParams,
 	listRef: Ref<HTMLUListElement>
 ) {
     return useCallback(

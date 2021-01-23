@@ -1,19 +1,13 @@
-import { h } from 'preact';
-import { useRef, useState } from 'preact/hooks';
+import {h} from 'preact';
+import {useRef, useState} from 'preact/hooks';
 import SearchResult from './search-result';
-import { useOnChangeCallback } from '../hooks/use-on-change-callback';
-import { Preface } from './preface';
-import { useOnSubmitCallback } from '../hooks/use-on-submit-callback';
-import { Form } from './form';
+import {useOnChangeCallback} from '../hooks/use-on-change-callback';
+import {Preface} from './preface';
+import {useOnSubmitCallback} from '../hooks/use-on-submit-callback';
+import {Form} from './form';
+import {DialogContentParams} from "./dialog-content-params";
 
-export default function DialogContent(props: {
-	index: number;
-	up: Function;
-	down: Function;
-	reset: Function;
-	searchFn: Function;
-	onClose: Function;
-}) {
+export default function DialogContent(props: DialogContentParams) {
 	const [results, setResults] = useState<
 		{ url: string; text: string; title: string }[]
 	>([]);

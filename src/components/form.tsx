@@ -1,16 +1,9 @@
-import { useCallback } from 'preact/hooks';
-import { SearchInput } from './search-input';
-import { h } from 'preact';
+import {useCallback} from 'preact/hooks';
+import {SearchInput} from './search-input';
+import {h} from 'preact';
+import {FormParams} from "./form-params";
 
-export function Form(props: {
-	onSubmit: (evt: Event) => void;
-	query: string;
-	onChange: (value: string) => void;
-	up: Function;
-	down: Function;
-	index: number;
-	resultsLength: number;
-}) {
+export function Form(props: FormParams) {
 	const onKeyDown = useCallback(
 		(evt: KeyboardEvent) => {
 			if (evt.code === 'ArrowUp') {
