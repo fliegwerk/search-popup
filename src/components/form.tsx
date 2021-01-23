@@ -1,12 +1,12 @@
-import {SearchInput} from './search-input';
-import {h} from 'preact';
-import {FormParams} from "./form-params";
-import {useFormKeyDownHandler} from "../hooks/use-form-key-down-handler";
+import { SearchInput } from './search-input';
+import { h } from 'preact';
+import { FormParams } from './form-params';
+import { useFormKeyDownHandler } from '../hooks/use-form-key-down-handler';
 
 export function Form(props: FormParams) {
-    const onKeyDown = useFormKeyDownHandler(props);
+	const onKeyDown = useFormKeyDownHandler(props);
 
-    return (
+	return (
 		<form id="search-form" onSubmit={props.onSubmit}>
 			<SearchInput
 				value={props.query}

@@ -1,8 +1,8 @@
-import {FormParams} from "../components/form-params";
-import {useCallback} from "preact/hooks";
+import {FormParams} from '../components/form-params';
+import {useCallback} from 'preact/hooks';
 
 export function useFormKeyDownHandler(props: FormParams) {
-    const onKeyDown = useCallback(
+    return useCallback(
         (evt: KeyboardEvent) => {
             if (evt.code === 'ArrowUp') {
                 evt.preventDefault();
@@ -14,5 +14,4 @@ export function useFormKeyDownHandler(props: FormParams) {
         },
         [props.index, props.up, props.down, props.resultsLength]
     );
-    return onKeyDown;
 }
