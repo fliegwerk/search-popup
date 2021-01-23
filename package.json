@@ -3,7 +3,8 @@
   "version": "1.0.1",
   "scripts": {
     "build": "webpack",
-    "start": "webpack --watch"
+    "start": "webpack --watch",
+    "style": "prettier -w src/**/*.*"
   },
   "author": "Pablo Klaschka",
   "license": "MIT",
@@ -13,6 +14,7 @@
     "awesome-typescript-loader": "^5.2.1",
     "css-loader": "^5.0.1",
     "extract-text-webpack-plugin": "^3.0.2",
+    "prettier": "^2.2.1",
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^5.1.1",
     "ts-loader": "^8.0.14",
@@ -22,7 +24,6 @@
     "webpack-license-plugin": "^4.1.2"
   },
   "dependencies": {
-    "dialog-polyfill": "^0.5.5",
     "preact": "^10.5.9",
     "preact-custom-element": "^4.2.1"
   }
