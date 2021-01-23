@@ -3,7 +3,6 @@
 }
 
 .search-dialog {
-	border: none;
 	border-radius: 1em;
 	width: 480px;
 	max-width: 80%;
@@ -34,7 +33,6 @@
 .search-dialog button,
 .search-dialog [type='search'] {
 	width: 100%;
-	/*margin: 0;*/
 }
 
 .search-dialog form {
