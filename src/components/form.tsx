@@ -1,23 +1,12 @@
-import {useCallback} from 'preact/hooks';
 import {SearchInput} from './search-input';
 import {h} from 'preact';
 import {FormParams} from "./form-params";
+import {useFormKeyDownHandler} from "../hooks/use-form-key-down-handler";
 
 export function Form(props: FormParams) {
-	const onKeyDown = useCallback(
-		(evt: KeyboardEvent) => {
-			if (evt.code === 'ArrowUp') {
-				evt.preventDefault();
-				if (props.index > 0) props.up();
-			} else if (evt.code === 'ArrowDown') {
-				evt.preventDefault();
-				if (props.index < props.resultsLength - 1) props.down();
-			}
-		},
-		[props.index, props.up, props.down, props.resultsLength]
-	);
+    const onKeyDown = useFormKeyDownHandler(props);
 
-	return (
+    return (
 		<form id="search-form" onSubmit={props.onSubmit}>
 			<SearchInput
 				value={props.query}
