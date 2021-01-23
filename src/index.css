@@ -1,62 +1,77 @@
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
-dialog.search-dialog {
-    border: none;
-    border-radius: var(--universal-border-radius);
-    width: 480px;
-    max-width: 80%;
-    position: fixed;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%);
-    margin: 0;
-    box-sizing: border-box;
+.search-dialog {
+	border-radius: 1em;
+	width: 480px;
+	max-width: 80%;
+	position: fixed;
+	top: calc(15vh - 1em);
+	left: 50%;
+	transform: translate(-50%);
+	margin: 0;
+	box-sizing: border-box;
+	z-index: 1600;
+	background: white;
+	padding: 1em;
 }
 
-dialog.search-dialog * {
-    box-sizing: border-box;
+.search-dialog * {
+	box-sizing: border-box;
 }
 
-dialog.search-dialog > div {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+.search-dialog > div {
+	display: flex;
+	flex-direction: column;
+	max-height: 70vh;
+	height: 100%;
 }
 
-dialog.search-dialog table, dialog.search-dialog input, dialog.search-dialog button, dialog.search-dialog [type="search"] {
-    width: 100%;
-    /*margin: 0;*/
+.search-dialog table,
+.search-dialog input,
+.search-dialog button,
+.search-dialog [type='search'] {
+	width: 100%;
 }
 
-dialog.search-dialog form {
-    background: transparent;
-    margin: 0;
-    padding: 0;
-    border: none;
+.search-dialog form {
+	background: transparent;
+	margin: 0;
+	padding: 0;
+	border: none;
 }
 
-dialog.search-dialog ul {
-    overflow: auto;
-    padding: 0;
-    margin: 1rem 0;
+.search-dialog ul {
+	overflow: auto;
+	padding: 0;
+	margin: 1rem 0;
 }
 
-dialog.search-dialog ul li {
-    list-style-type: none;
+.search-dialog ul li {
+	list-style-type: none;
 }
 
-dialog.search-dialog ul li.active a {
-    background: var(--button-back-color);
+.search-dialog ul li.active a {
+	background: #eee;
 }
 
-dialog.search-dialog ul li a {
-    color: inherit !important;
-    text-decoration: none;
-    display: block;
+.search-dialog ul li a {
+	color: inherit !important;
+	text-decoration: none;
+	display: block;
 }
 
-dialog.search-dialog ul li a:hover {
-    text-decoration: none;
+.search-dialog ul li a:hover {
+	text-decoration: none;
+}
+
+.backdrop {
+	background: rgba(0, 0, 0, 0.4);
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1500;
 }
