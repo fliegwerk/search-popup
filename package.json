@@ -1,5 +1,5 @@
 {
-  "name": "search-popup",
+  "name": "@fliegwerk/search-popup",
   "version": "1.0.1",
   "scripts": {
     "build": "webpack",
