@@ -1,62 +1,77 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
-    <title>Document</title>
-    <style>
-        header {
-            display: flex;
-            align-items: center;
-        }
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+		/>
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css"
+		/>
+		<title>Document</title>
+		<style>
+			header {
+				display: flex;
+				align-items: center;
+			}
 
-        .spacer {
-            flex-grow: 1;
-        }
-    </style>
-</head>
-<body>
-<header class="sticky">
-    <a href="#" class="logo">Search Popup</a>
-    <div class="spacer"></div>
-    <button onclick="openSearch()"><span class="icon-search"></span> Search: <kbd>Ctrl</kbd>+<kbd>K</kbd></button>
-</header>
-<h1>Search Popup Demo</h1>
+			.spacer {
+				flex-grow: 1;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="sticky">
+			<a href="#" class="logo">Search Popup</a>
+			<div class="spacer"></div>
+			<button onclick="openSearch()">
+				<span class="icon-search"></span> Search: <kbd>Ctrl</kbd>+<kbd>K</kbd>
+			</button>
+		</header>
+		<h1>Search Popup Demo</h1>
 
-<script src="https://rawcdn.githack.com/nextapps-de/flexsearch/master/dist/flexsearch.min.js"></script>
-<script src="dist/bundle.js"></script>
-<script>
-    const index = [{
-        "name": "props",
-        "text": "Element.props",
-        "url": "/docs/Element#props"
-    }, /* ... */];
+		<script src="https://rawcdn.githack.com/nextapps-de/flexsearch/master/dist/flexsearch.min.js"></script>
+		<script src="dist/bundle.js"></script>
+		<script>
+			const index = [
+				{
+					name: 'props',
+					text: 'Element.props',
+					url: '/docs/Element#props',
+				} /* ... */,
+			];
 
-    const searchIndex = new FlexSearch({
-        encode: q => (q.replace(/([a-z])([A-Z])/g, "$1 $2")).toLowerCase() + ' ' + q.toLowerCase(),
-        tokenize: "full",
-        threshold: 0,
-        resolution: 9,
-        depth: 3,
-        doc: {
-            id: 'url',
-            field: ['name', 'text']
-        }
-    });
+			const searchIndex = new FlexSearch({
+				encode: (q) =>
+					q.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase() +
+					' ' +
+					q.toLowerCase(),
+				tokenize: 'full',
+				threshold: 0,
+				resolution: 9,
+				depth: 3,
+				doc: {
+					id: 'url',
+					field: ['name', 'text'],
+				},
+			});
 
-    searchIndex.add(index)
+			searchIndex.add(index);
 
-    function search(q) {
-        q = q || '';
-        return searchIndex.search((q.replace(/([a-z])([A-Z])/g, "$1 $2")).toLowerCase(), 5)
-    }
+			function search(q) {
+				q = q || '';
+				return searchIndex.search(
+					q.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase(),
+					5
+				);
+			}
 
-    const searchPopup = document.createElement('search-popup');
-    searchPopup.setAttribute('search', 'search')
-    document.body.appendChild(searchPopup);
-</script>
-</body>
+			const searchPopup = document.createElement('search-popup');
+			searchPopup.setAttribute('search', 'search');
+			document.body.appendChild(searchPopup);
+		</script>
+	</body>
 </html>
