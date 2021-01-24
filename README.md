@@ -26,6 +26,9 @@
 </script>
 ```
 
+> **⚠ INCOMPATIBILITY NOTICE:** The `openPage` function used by this library
+> is incompatible with `scroll-behavior: smooth` on Chrome browsers.
+
 ## Author
 
 👤 **Pablo Klaschka**
