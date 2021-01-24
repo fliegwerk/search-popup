@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/fliegwerk/search-popup/compare/v1.0.6...v2.0.0) (2021-01-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* I haven't found a way to get `openPage` to work reliably in combination with `scroll-behavior: smooth` in Chrome. This fixes problems in the attempts to fix the issue, but also concludes by stating an incompatibility with `scroll-behavior: smooth`. ALL PRIOR VERSIONS MAY BE CONSIDERED DEPRECATED.
+
+### Bug Fixes
+
+* Fix revisions of `openPage` functions and add incompatibility notice ([52a9a42](https://github.com/fliegwerk/search-popup/commit/52a9a42aa68c7d1522450226c228ae716a3456f4))
+
 ### [1.0.6](https://github.com/fliegwerk/search-popup/compare/v1.0.5...v1.0.6) (2021-01-24)
 
 
