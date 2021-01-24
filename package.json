@@ -5,7 +5,8 @@
     "build": "webpack",
     "start": "webpack --watch",
     "style": "prettier -w src/**/*.*",
-    "release": "standard-version"
+    "release": "standard-version -a",
+    "precommit": "npm run build && git add dist"
   },
   "author": "Pablo Klaschka",
   "license": "MIT",

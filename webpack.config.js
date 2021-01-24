@@ -12,7 +12,7 @@ module.exports = {
         module: false,
         pathinfo: true
     },
-    mode: "development",
+    mode: "production",
     optimization: {
         minimize: true,
         minimizer: [new TerserPlugin({
