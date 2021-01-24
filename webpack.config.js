@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const TerserPlugin = require("terser-webpack-plugin");
 const WebpackLicensePlugin = require("webpack-license-plugin");
+const {version, name} = require('./package.json');
 
 module.exports = {
     entry: [
@@ -19,10 +20,8 @@ module.exports = {
         })]
     },
     plugins: [
-        new WebpackLicensePlugin({
-            licenseOverrides: {'dialog-polyfill@0.5.5': 'BSD-3-Clause'}
-        }),
-        new webpack.BannerPlugin({banner: "See oss-licenses.json for licenses of open-source projects used here."})
+        new WebpackLicensePlugin(),
+        new webpack.BannerPlugin({banner: `${name} v${version}. Copyright (c) 2021 by Pablo Klaschka (MIT Licensed). See oss-licenses.json for licenses of open-source projects used and packaged here.`})
     ],
     devtool: 'source-map',
     module: {
